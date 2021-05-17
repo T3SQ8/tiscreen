@@ -1,0 +1,15 @@
+tiscreen (TI calculator screen)
+v1.0
+
+This package mimics the screen of older Texas instruments dot matrix display
+calculators, specifically the TI-82 STATS.
+
+Changes:
+- 2021/05/17 Initial version
+
+For more information, please see the documentation.
+
+Copyright 2021
+This work may be distributed and/or modified under the conditions of the LaTeX
+Project Public License, either version 1.3c or higher. The latest version the
+license is at: http://www.latex-project.org/lppl.txt

@@ -1,0 +1,127 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{parskip}
+\usepackage[color]{tiscreen}
+\usepackage{multicol}
+
+\usepackage{listings}
+\lstset{
+	numbers=left, numberstyle=\tiny,
+	frame=single,
+	basicstyle=\footnotesize\ttfamily,
+	language=Tex,
+}
+
+\newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
+\newcommand{\LCDcode}[1]{\texttt{\{#1\}}}
+
+\title{TI calculator display\\{\small(TI-82 STATS)}}
+\author{Mustafa Ibrahim}
+\date{2021/05/17}
+
+\begin{document}
+
+\maketitle
+\begin{center}
+\tiscreen
+|10^6*(4^7+1){rarrow}X  |
+|       1.6385E10|
+|{sqrt}(X)*X/10!      |
+|     577971782.1|
+|cos{ar}(cos(Ans))  |
+|        62.11246|
+|{fcur}               |
+|                |
+\end{center}
+\tableofcontents
+\newpage
+
+\section{Quickstart}
+\tiscreen
+|4+1             |
+|               5|
+|Ans{sq}            |
+|              25|
+|                |
+|                |
+|                |
+|                |
+
+\begin{lstlisting}
+\documentclass{article}
+\usepackage[color]{tiscreen}
+% Remove 'color' to display in back and white
+
+\begin{document}
+
+\tiscreen
+|4+1             |
+|               5|
+|Ans{sq}            |
+|              25|
+|                |
+|                |
+|                |
+|                |
+
+\end{document}
+\end{lstlisting}
+
+\section{Package option(s)}
+\subsection{Color}
+Using the \texttt{color} option will change the colors used by the
+\texttt{\textbackslash LCD} command. The colors are defined as
+\texttt{tiscreenfg} (foreground. i.e. font color) and \texttt{tiscreenbg}
+(background). These colors can be redefined like this:
+
+\begin{lstlisting}
+% Add this to your preamble
+\definecolor{tiscreenbg}{HTML}{5d9345}
+\definecolor{tiscreenfg}{HTML}{FFFFFF}
+\end{lstlisting}
+
+\section{LCD size}
+The default LCD size is $8\times 16$ (the size of the TI-82 STATS). It can be
+changed by redefining the variables used to determine the size of the display
+or by using the original {\textbackslash LCD} command.
+
+\begin{lstlisting}
+% First method:
+\def\tiscreenX{16}
+\def\tiscreenY{8}
+
+% Second method:
+\LCD{5}{11}
+|ANOTHER  |
+|EXAMPLE  |
+|WITH A   |
+|DIFFERENT|
+|SIZE     |
+\end{lstlisting}
+
+\section{Additional defined characters} \LCDcolors{black}{white}
+\begin{tabular}{l|l|l}
+	Name & Symbol & Code \\
+	\hline
+	E (scientific notation) & \LCDsymb{sciE} & \LCDcode{sciE} \\
+	Sigma (lowercase) & \LCDsymb{sigma} & \LCDcode{sigma} \\
+	$\bar x$ & \LCDsymb{barx} & \LCDcode{barx} \\
+	$\bar y$ & \LCDsymb{bary} & \LCDcode{bary} \\
+	$^\wedge 2$ (square root) & \LCDsymb{sq} & \LCDcode{sq} \\
+	$^\wedge (-1)$ & \LCDsymb{ar} & \LCDcode{ar} \\
+\end{tabular}
+
+\subsection{Redefined characters}
+Predefined characters that where redefined to match the TI-82 STATS.
+
+\begin{tabular}{l|l|l}
+	Name & Symbol & Code \\
+	\hline
+	e & \LCDsymb{e} & \texttt{e} \\
+	i & \LCDsymb{i} & \texttt{i} \\
+	Square root & \LCDsymb{sqrt} & \LCDcode{sqrt} \\
+	! & \LCDsymb{!} & \LCDcode{!} \\
+\end{tabular}
+
+\end{document}
