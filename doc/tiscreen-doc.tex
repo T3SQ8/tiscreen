@@ -5,6 +5,7 @@
 \usepackage{parskip}
 \usepackage[color]{tiscreen}
 \usepackage{multicol}
+\usepackage{hyperref}
 
 \usepackage{listings}
 \lstset{
@@ -41,7 +42,7 @@
 \tiscreen
 |4+1             |
 |               5|
-|Ans{sq}            |
+|Ans{sq}         |
 |              25|
 |                |
 |                |
@@ -58,7 +59,7 @@
 \tiscreen
 |4+1             |
 |               5|
-|Ans{sq}            |
+|Ans{sq}         |
 |              25|
 |                |
 |                |
@@ -102,34 +103,32 @@ or by using the original {\textbackslash LCD} command.
 
 \section{Additional defined characters} \LCDcolors{black}{white}
 \begin{tabular}{l|l|l}
-	Name				& Symbol		& Code \\
 	\hline
-	E (scientific notation)		& \LCDsymb{sciE}	& \LCDcode{sciE} \\
-	Sigma (lowercase)		& \LCDsymb{sigma}	& \LCDcode{sigma} \\
-	$\bar x$			& \LCDsymb{barx}	& \LCDcode{barx} \\
-	$\bar y$			& \LCDsymb{bary}	& \LCDcode{bary} \\
-	$^\wedge 2$ (power of two)	& \LCDsymb{sq}		& \LCDcode{sq} \\
-	$^\wedge (-1)$			& \LCDsymb{ar}		& \LCDcode{ar} \\
-	$_1$				& \LCDsymb{sub1}	& \LCDcode{sub1} \\
-	$_2$				& \LCDsymb{sub2}	& \LCDcode{sub2} \\
-	$_3$				& \LCDsymb{sub3}	& \LCDcode{sub3} \\
-	$_4$				& \LCDsymb{sub4}	& \LCDcode{sub4} \\
-	$_5$				& \LCDsymb{sub5}	& \LCDcode{sub5} \\
-	$_6$				& \LCDsymb{sub6}	& \LCDcode{sub6} \\
-\end{tabular}
-
-\subsection{Redefined characters}
-Predefined characters that where redefined to match the TI-82 STATS.
-
-\begin{tabular}{l|l|l}
-	Name					& Symbol		& Code \\
+	\multicolumn{3}{c}{\textbf{Added characters}} \\
+	\hline \hline
+	Name			& Symbol		& Code \\
 	\hline
-	!					& \LCDsymb{!}		& \LCDcode{!} \\
-	$\sqrt{\hphantom{0}}$ (Square root)	& \LCDsymb{sqrt}	& \LCDcode{sqrt} \\
-	e					& \LCDsymb{e}		& \texttt{e} \\
-	i					& \LCDsymb{i}		& \texttt{i} \\
-	v					& \LCDsymb{v}		& \texttt{v} \\
-	w					& \LCDsymb{w}		& \texttt{w} \\
+	E 			& \LCDsymb{sciE}	& \LCDcode{sciE} \\
+	$\sigma$ 		& \LCDsymb{sigma}	& \LCDcode{sigma} \\
+	$\bar x$		& \LCDsymb{barx}	& \LCDcode{barx} \\
+	$\bar y$		& \LCDsymb{bary}	& \LCDcode{bary} \\
+	$^\wedge 2$ 		& \LCDsymb{sq}		& \LCDcode{sq} \\
+	$^\wedge (-1)$		& \LCDsymb{ar}		& \LCDcode{ar} \\
+	$_1$			& \LCDsymb{sub1}	& \LCDcode{sub1} \\
+	$_2$			& \LCDsymb{sub2}	& \LCDcode{sub2} \\
+	$_3$			& \LCDsymb{sub3}	& \LCDcode{sub3} \\
+	$_4$			& \LCDsymb{sub4}	& \LCDcode{sub4} \\
+	$_5$			& \LCDsymb{sub5}	& \LCDcode{sub5} \\
+	$_6$			& \LCDsymb{sub6}	& \LCDcode{sub6} \\
+	\hline
+	\multicolumn{3}{c}{\textbf{Redefined characters}} \\
+	\hline \hline
+	!			& \LCDsymb{!}		& \LCDcode{!} \\
+	$\sqrt{\hphantom{0}}$ 	& \LCDsymb{sqrt}	& \LCDcode{sqrt} \\
+	e			& \LCDsymb{e}		& \texttt{e} \\
+	i			& \LCDsymb{i}		& \texttt{i} \\
+	v			& \LCDsymb{v}		& \texttt{v} \\
+	w			& \LCDsymb{w}		& \texttt{w} \\
 \end{tabular}
 
 \end{document}
