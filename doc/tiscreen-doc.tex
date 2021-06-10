@@ -6,6 +6,8 @@
 \usepackage[color]{tiscreen}
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{array}
 
 \usepackage{listings}
 \lstset{
@@ -17,6 +19,7 @@
 
 \newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
 \newcommand{\LCDcode}[1]{\texttt{\{#1\}}}
+\newcommand{\LCDcmd}{\textbackslash\texttt{LCD}\xspace}
 
 \title{TI calculator display\\{\small(TI-82 STATS)}}
 \author{Mustafa Ibrahim}
@@ -71,10 +74,10 @@
 
 \section{Package option(s)}
 \subsection{Color}
-Using the \texttt{color} option will change the colors used by the
-\textbackslash\texttt{LCD} command. The colors are defined as
-\texttt{tiscreenfg} (foreground. i.e. font color) and \texttt{tiscreenbg}
-(background). These colors can be redefined like this:
+Using the \texttt{color} option will change the colors used by the \LCDcmd
+command. The colors are defined as \texttt{tiscreenfg} (foreground. i.e. font
+color) and \texttt{tiscreenbg} (background). These colors can be redefined like
+this:
 
 \begin{lstlisting}
 % Add this to your preamble
@@ -83,9 +86,10 @@ Using the \texttt{color} option will change the colors used by the
 \end{lstlisting}
 
 \section{LCD size}
-The default LCD size is $8\times 16$ (the size of the TI-82 STATS). It can be
-changed by redefining the variables used to determine the size of the display
-or by using the original {\textbackslash LCD} command.
+The default LCD size is $8\times 16$ (the size of the TI-82
+STATS). It can be changed by redefining the variables used to
+determine the size of the display or by using the original
+\LCDcmd command.
 
 \begin{lstlisting}
 % First method:
@@ -102,33 +106,33 @@ or by using the original {\textbackslash LCD} command.
 \end{lstlisting}
 
 \section{Additional defined characters} \LCDcolors{black}{white}
-\begin{tabular}{l|l|l}
+\begin{tabular}{l|l|>{\ttfamily}l}
 	\hline
 	\multicolumn{3}{c}{\textbf{Added characters}} \\
 	\hline \hline
-	Name			& Symbol		& Code \\
+	Name		& Symbol		&\normalfont{\LCDcmd Code} \\
 	\hline
-	E 			& \LCDsymb{sciE}	& \LCDcode{sciE} \\
-	$\sigma$ 		& \LCDsymb{sigma}	& \LCDcode{sigma} \\
-	$\bar x$		& \LCDsymb{barx}	& \LCDcode{barx} \\
-	$\bar y$		& \LCDsymb{bary}	& \LCDcode{bary} \\
-	$^\wedge 2$ 		& \LCDsymb{sq}		& \LCDcode{sq} \\
-	$^\wedge (-1)$		& \LCDsymb{ar}		& \LCDcode{ar} \\
-	$_1$			& \LCDsymb{sub1}	& \LCDcode{sub1} \\
-	$_2$			& \LCDsymb{sub2}	& \LCDcode{sub2} \\
-	$_3$			& \LCDsymb{sub3}	& \LCDcode{sub3} \\
-	$_4$			& \LCDsymb{sub4}	& \LCDcode{sub4} \\
-	$_5$			& \LCDsymb{sub5}	& \LCDcode{sub5} \\
-	$_6$			& \LCDsymb{sub6}	& \LCDcode{sub6} \\
+	E		& \LCDsymb{sciE}	& \{sciE\} \\
+	$\sigma$	& \LCDsymb{sigma}	& \{sigma\} \\
+	$\bar x$	& \LCDsymb{barx}	& \{barx\} \\
+	$\bar y$	& \LCDsymb{bary}	& \{bary\} \\
+	$x^2$		& \LCDsymb{sq}		& \{sq\} \\
+	$x^{-1}$	& \LCDsymb{ar}		& \{ar\} \\
+	$x_1$		& \LCDsymb{sub1}	& \{sub1\} \\
+	$x_2$		& \LCDsymb{sub2}	& \{sub2\} \\
+	$x_3$		& \LCDsymb{sub3}	& \{sub3\} \\
+	$x_4$		& \LCDsymb{sub4}	& \{sub4\} \\
+	$x_5$		& \LCDsymb{sub5}	& \{sub5\} \\
+	$x_6$		& \LCDsymb{sub6}	& \{sub6\} \\
 	\hline
 	\multicolumn{3}{c}{\textbf{Redefined characters}} \\
 	\hline \hline
-	!			& \LCDsymb{!}		& \LCDcode{!} \\
-	$\sqrt{\hphantom{0}}$ 	& \LCDsymb{sqrt}	& \LCDcode{sqrt} \\
-	e			& \LCDsymb{e}		& \texttt{e} \\
-	i			& \LCDsymb{i}		& \texttt{i} \\
-	v			& \LCDsymb{v}		& \texttt{v} \\
-	w			& \LCDsymb{w}		& \texttt{w} \\
+	!		& \LCDsymb{!}		& \{!\} \\
+	$\sqrt{x}$	& \LCDsymb{sqrt}	& \{sqrt\} \\
+	e		& \LCDsymb{e}		& e \\
+	i		& \LCDsymb{i}		& i \\
+	v		& \LCDsymb{v}		& v \\
+	w		& \LCDsymb{w}		& w \\
 \end{tabular}
 
 \end{document}
