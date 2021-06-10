@@ -8,13 +8,13 @@
 \usepackage{hyperref}
 \usepackage{xspace}
 \usepackage{array}
-
-\usepackage{listings}
-\lstset{
-	numbers=left, numberstyle=\tiny,
+\usepackage{fancyvrb-ex}
+\fvset{
 	frame=single,
-	basicstyle=\footnotesize\ttfamily,
-	language=Tex,
+	label=\fbox{Source},
+	framesep=4mm,
+	numbers=left,
+	fontsize=\footnotesize,
 }
 
 \newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
@@ -42,35 +42,21 @@
 \newpage
 
 \section{Quickstart}
-\tiscreen
-|4+1             |
-|               5|
-|Ans{sq}         |
-|              25|
-|                |
-|                |
-|                |
-|                |
 
-\begin{lstlisting}
-\documentclass{article}
-\usepackage[color]{tiscreen}
-% Remove 'color' to display in back and white
-
-\begin{document}
+\begin{SideBySideExample}[xrightmargin=6cm]
+%\usepackage[color]{tiscreen}
 
 \tiscreen
 |4+1             |
 |               5|
 |Ans{sq}         |
 |              25|
+|{fcur}          |
 |                |
 |                |
 |                |
-|                |
+\end{SideBySideExample}
 
-\end{document}
-\end{lstlisting}
 
 \section{Package option(s)}
 \subsection{Color}
@@ -79,11 +65,11 @@ command. The colors are defined as \texttt{tiscreenfg} (foreground. i.e. font
 color) and \texttt{tiscreenbg} (background). These colors can be redefined like
 this:
 
-\begin{lstlisting}
+\begin{Verbatim}
 % Add this to your preamble
 \definecolor{tiscreenbg}{HTML}{5d9345}
 \definecolor{tiscreenfg}{HTML}{FFFFFF}
-\end{lstlisting}
+\end{Verbatim}
 
 \section{LCD size}
 The default LCD size is $8\times 16$ (the size of the TI-82
@@ -91,19 +77,19 @@ STATS). It can be changed by redefining the variables used to
 determine the size of the display or by using the original
 \LCDcmd command.
 
-\begin{lstlisting}
-% First method:
+\begin{Verbatim}
+% First method (For entire document)
 \def\tiscreenX{16}
 \def\tiscreenY{8}
 
-% Second method:
+% Second method (Only once)
 \LCD{5}{11}
 |ANOTHER  |
 |EXAMPLE  |
 |WITH A   |
 |DIFFERENT|
 |SIZE     |
-\end{lstlisting}
+\end{Verbatim}
 
 \section{Additional defined characters} \LCDcolors{black}{white}
 \begin{tabular}{l|l|>{\ttfamily}l}
