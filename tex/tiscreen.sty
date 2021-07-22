@@ -4,10 +4,9 @@
 % license is at: http://www.latex-project.org/lppl.txt
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tiscreen}[2021/06/10 Ti calculator screen]
+\ProvidesPackage{tiscreen}[2021/07/22 Ti calculator screen]
 
-% TODO
-% Scaling option
+% TODO: Scaling option
 
 \def\tiscreenX{16}
 \def\tiscreenY{8}
@@ -26,6 +25,7 @@
 \DefineLCDchar{sub4}{00000000000100001010011100001000010}
 \DefineLCDchar{sub5}{00000000000111001000011000001001100}
 \DefineLCDchar{sub6}{00000000000011001000011100101001110}
+\DefineLCDchar{cx}{00101000100010100000000000000000000}
 % Redefine
 \DefineLCDchar{sqrt}{00111001000010000100101000110000100}
 \DefineLCDchar{!}{00100001000010000100000000010000100}
@@ -33,6 +33,10 @@
 \DefineLCDchar{i}{01000000001100001000010000101000100}
 \DefineLCDchar{w}{00000000001000110001101011010101010}
 \DefineLCDchar{v}{00000000001000110001100010101000100}
+\DefineLCDchar{[}{00110001000010000100001000010000110}
+\DefineLCDchar{]}{01100001000010000100001000010001100}
+\DefineLCDchar{lb}{00011001000010001000001000010000011}
+\DefineLCDchar{rb}{11000001000010000010001000010011000}
 
 \RequirePackage{xcolor}
 \definecolor{tiscreenfg}{HTML}{000000}
