@@ -1,3 +1,5 @@
+% TODO: make funciton for printing \LCDcmd
+
 \documentclass[a4paper,12pt]{article}
 \usepackage[iso,english]{isodate}
 \usepackage[margin=1in]{geometry}
@@ -17,9 +19,9 @@
 }
 
 \newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
-\newcommand{\LCDcmd}{\texttt{\textbackslash LCD}}
+\newcommand{\printcmd}[1]{\texttt{\textbackslash #1}}
 
-\title{TI calculator display\\{\small(TI-82 STATS)}}
+\title{TI calculator screen (and buttons)\\{\small TI-82 STATS}}
 \author{Mustafa Ibrahim}
 
 \begin{document}
@@ -36,13 +38,15 @@
 |        62.11246|
 |{fcur}               |
 |                |
+
+\tibtnmatrixextra
 \end{center}
 
 \tableofcontents\newpage
 
 \section{Quickstart}
 
-\begin{SideBySideExample}[xrightmargin=6cm]
+\begin{SideBySideExample}[xrightmargin=5.5cm]
 %\usepackage[color]{tiscreen}
 
 \tiscreen
@@ -54,15 +58,23 @@
 |                |
 |                |
 |                |
+
+\tibtnmatrixextra
+
+Lorem
+\tibtn[white]{tibtngray}{MATH}
+ipsum
+
+\tibtnextra{\tibtn[white]{tibtngray}{MATH}}{TEST}{A}
 \end{SideBySideExample}
 
 \section{Package option(s)}
 \subsection{Color}
 
-Using the \texttt{color} option will change the colors used by the \LCDcmd{}
-command. The colors are defined as \texttt{tiscreenfg} (foreground. i.e. font
-color) and \texttt{tiscreenbg} (background). These colors can be redefined like
-this:
+Using the \texttt{color} option will change the colors used by the
+\printcmd{LCD} command for printing the screen using \printcmd{tiscreen}. The
+colors are defined as \texttt{tiscreenfg} (foreground, i.e. font color) and
+\texttt{tiscreenbg} (background) and redefined like this:
 
 \begin{Verbatim}
 % Add this to your preamble
@@ -70,11 +82,12 @@ this:
 \definecolor{tiscreenfg}{HTML}{FFFFFF}
 \end{Verbatim}
 
+\part{Screen}
 \section{LCD size}
 
 The default LCD size is $8 \times 16$ (the size of the TI-82 STATS). It can be
 changed by redefining the variables used to determine the size of the display
-or by using the original \LCDcmd{} command.
+or by using the original \printcmd{LCD} command.
 
 \begin{Verbatim}
 % First method (For entire document)
@@ -95,7 +108,7 @@ or by using the original \LCDcmd{} command.
 	\begin{tabular}{|l|l|>{\ttfamily}l|}
 		\multicolumn{3}{c}{\textbf{Added characters}} \\
 		\hline
-		Name       & Symbol          &\textnormal{\LCDcmd{} Code} \\
+		Name       & Symbol          &\textnormal{\printcmd{LCD} Code} \\
 		\hline
 		E          & \LCDsymb{sciE}  & \{sciE\} \\
 		$\sigma$   & \LCDsymb{sigma} & \{sigma\} \\
@@ -124,6 +137,33 @@ or by using the original \LCDcmd{} command.
 		v          & \LCDsymb{v}     & v \\
 		w          & \LCDsymb{w}     & w \\
 		\hline
+	\end{tabular}
+\end{center}
+
+\part{Buttons}
+\section{Usage}
+
+Use the \printcmd{tibtn} command only prints the button and is usefull when
+needing the buttons to be displayed inline. The \printcmd{tibtnextra} takes
+extra arguments to show extra options for the button (accesed by the
+\tibtnsecond{} and \tibtnalpha{} buttons).
+
+\begin{SideBySideExample}[xrightmargin=5.5cm]
+\tibtnextra{\tibtn[white]{tibtngray}{MATH}}{TEST}{A}
+
+Lorem
+\tibtn[white]{tibtngray}{MATH}
+ipsum
+\end{SideBySideExample}
+
+\section{Defined buttons}
+
+\begin{center}
+	\begin{tabular}{|>{\ttfamily}l|l|}
+		\multicolumn{2}{c}{\textbf{Defined buttons}}      \\ \hline
+		\textnormal{Command}        & Output              \\ \hline
+		\printcmd{tibtnmatrix}      & \tibtnmatrix{}      \\ \hline
+		\printcmd{tibtnmatrixextra} & \tibtnmatrixextra{} \\ \hline
 	\end{tabular}
 \end{center}
 

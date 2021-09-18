@@ -1,9 +1,10 @@
 tiscreen (TI calculator screen)
 
-This package mimics the screen of older Texas instruments dot matrix display
-calculators, specifically the TI-82 STATS.
+This package mimics the screen and buttons of older Texas instruments dot
+matrix display calculators, specifically the TI-82 STATS.
 
 Changes:
+- 2021/09/18 Added buttons
 - 2021/07/22 Added bracket symbols
 - 2021/06/10 Simplified example code in documentation
 - 2021/06/07 Simplified characters table in documentation
