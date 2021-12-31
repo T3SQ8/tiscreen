@@ -4,7 +4,7 @@
 % version the license is at: http://www.latex-project.org/lppl.txt
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tiscreen}[2021/09/18 Ti calculator screen]
+\ProvidesPackage{tiscreen}[2021/12/31 Ti calculator screen]
 
 \def\tiscreenX{16}
 \def\tiscreenY{8}
@@ -18,7 +18,13 @@
 \RequirePackage{textgreek}
 \RequirePackage{wasysym}
 
-% Define screen characters
+%
+% SCREEN CHARACTERS
+%
+
+% TODO add reverse alpha and reverse arrow
+
+% Define characters
 \DefineLCDchar{barx}{11111000001000101010001000101010001}
 \DefineLCDchar{bary}{11111000001000110001011110000101110}
 \DefineLCDchar{ar}{00011000011100100001000010000000000}
@@ -32,7 +38,7 @@
 \DefineLCDchar{sub5}{00000000000111001000011000001001100}
 \DefineLCDchar{sub6}{00000000000011001000011100101001110}
 \DefineLCDchar{cx}{00101000100010100000000000000000000}
-% Redefine screen characters
+% Redefine characters
 \DefineLCDchar{sqrt}{00111001000010000100101000110000100}
 \DefineLCDchar{!}{00100001000010000100000000010000100}
 \DefineLCDchar{e}{00000000000111010001111101000001100}
@@ -63,11 +69,14 @@
 \DeclareOption*{\PackageWarning{tiscreen}{Unknown ‘\CurrentOption’}}
 \ProcessOptions\relax
 
-% Screen commands
+%
+% COMMANDS
+%
+
 \newcommand{\tiscreen}{\LCD{\tiscreenY}{\tiscreenX}}
 
-% Button commands
 \newcommand{\tibtn}[3][black]{\tikz{\bfseries\tiny\sffamily \node[fill=#2, draw, rounded corners, minimum height=2.5em, minimum width=4.5em, align=center] {\textcolor{#1}{#3}};}}
+
 \newcommand{\tibtnextra}[3]{%
 	\tcbox[colback=tibtncaseblack,size=small]{%
 		\begin{tabular}{l@{}r}%

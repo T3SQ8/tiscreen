@@ -19,9 +19,6 @@
 	fontsize=\footnotesize,
 }
 
-\newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
-\newcommand{\printcmd}[1]{\texttt{\textbackslash #1}}
-
 \title{TI calculator screen (and buttons)\\{\small TI-82 STATS}}
 \author{Mustafa Ibrahim}
 
@@ -76,13 +73,9 @@
 |                |
 |                |
 
-\tibtnmatrixextra
+Lorem \tibtnmath{} ipsum
 
-Lorem
-\tibtn[white]{tibtngray}{MATH}
-ipsum
-
-\tibtnextra{\tibtn[white]{tibtngray}{MATH}}{TEST}{A}
+\tibtnextramath
 \end{SideBySideExample}
 
 \section{Package option(s)}
@@ -115,11 +108,12 @@ as \texttt{tiscreenfg} (foreground, i.e. font color) and \texttt{tiscreenbg}
 \end{tabular}
 
 \part{Screen}
+
 \section{LCD size}
 
 The default LCD size is $8 \times 16$ (the size of the TI-82 STATS). It can be
 changed by redefining the variables used to determine the size of the display
-or by using the original \printcmd{LCD} command.
+or by using the original \verb|\LCD| command.
 
 \begin{Verbatim}
 % First method (For entire document)
