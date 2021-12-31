@@ -1,14 +1,15 @@
-% TODO: make funciton for printing \LCDcmd
-
 \documentclass[a4paper,12pt]{article}
+
 \usepackage[iso,english]{isodate}
 \usepackage[margin=1in]{geometry}
 \usepackage[english]{babel}
+\usepackage{hyperref}
 \usepackage{parskip}
+
 \usepackage[color]{tiscreen}
 \usepackage{multicol}
-\usepackage{hyperref}
 \usepackage{array}
+\usepackage{longtable}
 \usepackage{fancyvrb-ex}
 \fvset{
 	frame=single,
@@ -29,20 +30,36 @@
 \maketitle
 
 \begin{center}
-\tiscreen
-|10^6*(4^7+1){rarrow}X  |
-|       1.6385E10|
-|{sqrt}(X)*X/10!      |
-|     577971782.1|
-|cos{ar}(cos(Ans))  |
-|        62.11246|
-|{fcur}               |
-|                |
+	\begin{tabular}{cc}
+		\tiscreen
+		|10^6*(4^7+1){rarrow}X  |
+		|       1.6385E10|
+		|{sqrt}(X)*X/10!      |
+		|     577971782.1|
+		|cos{ar}(cos(Ans))  |
+		|        62.11246|
+		|{fcur}               |
+		|                |
+		&
+		\tibtnextramatrix
+	\end{tabular}
 
-\tibtnmatrixextra
+	\dotfill
+
+	\begin{tabular}{ccccc}
+		\tibtnsecond & \tibtnmode   & \tibtndel       &                  &             \\
+		\tibtnalpha  & \tibtnxton   & \tibtnstat      &                  &             \\
+		\tibtnmath   & \tibtnmatrix & \tibtnprgm      & \tibtnvars       & \tibtnclear \\
+		\tibtnxnone  & \tibtnsin    & \tibtncos       & \tibtntan        & \tibtnpower \\
+		\tibtnxtwo   & \tibtncomma  & \tibtnleftparen & \tibtnrightparen & \tibtndiv   \\
+		\tibtnlog    & \tibtnseven  & \tibtneight     & \tibtnnine       & \tibtntimes \\
+		\tibtnln     & \tibtnfour   & \tibtnfive      & \tibtnsix        & \tibtnminus \\
+		\tibtnsto    & \tibtnone    & \tibtntwo       & \tibtnthree      & \tibtnplus  \\
+		\tibtnon     & \tibtnzero   & \tibtndot       & \tibtnneg        & \tibtnenter \\
+	\end{tabular}
 \end{center}
 
-\tableofcontents\newpage
+\newpage\tableofcontents\newpage
 
 \section{Quickstart}
 
@@ -69,18 +86,33 @@ ipsum
 \end{SideBySideExample}
 
 \section{Package option(s)}
-\subsection{Color}
 
-Using the \texttt{color} option will change the colors used by the
-\printcmd{LCD} command for printing the screen using \printcmd{tiscreen}. The
-colors are defined as \texttt{tiscreenfg} (foreground, i.e. font color) and
-\texttt{tiscreenbg} (background) and redefined like this:
+\subsection{Color} \label{sec:color}
+
+Using the \texttt{color} option will change the colors used by the \verb|\LCD|
+command for printing the screen using \verb|\tiscreen|. The colors are defined
+as \texttt{tiscreenfg} (foreground, i.e. font color) and \texttt{tiscreenbg}
+(background) and redefined like this:
 
 \begin{Verbatim}
 % Add this to your preamble
 \definecolor{tiscreenbg}{HTML}{5d9345}
 \definecolor{tiscreenfg}{HTML}{FFFFFF}
 \end{Verbatim}
+
+\subsection{Defined colors} \label{sec:colordef}
+
+\begin{tabular}{lcl}
+	Name            & Color                                                              & Usage        \\ \hline
+	tiscreenfg      & {\ttfamily \color{tiscreenfg}{000000}}                             & LCD commands \\
+	tiscreenbg      & {\ttfamily \color{tiscreenbg}{5d9345}}                             & LCD commands \\
+	tibtngray       & {\ttfamily \color{tibtngray}{494F54}}                              & Buttons      \\
+	tibtnyellow     & {\ttfamily \colorbox{tibtncaseblack}{\color{tibtnyellow}{F1E78B}}} & Buttons      \\
+	tibtngreen      & {\ttfamily \colorbox{tibtncaseblack}{\color{tibtngreen}{D5DE93}}}  & Buttons      \\
+	tibtnwhite      & {\ttfamily \colorbox{tibtncaseblack}{\color{tibtnwhite}{E2E2E2}}}  & Buttons      \\
+	tibtnblue       & {\ttfamily \colorbox{tibtncaseblack}{\color{tibtnblue}{CDE2E9}}}   & Buttons      \\
+	tibtncaseblack  & {\ttfamily \color{tibtncaseblack}{232A32}}                         & Buttons      \\
+\end{tabular}
 
 \part{Screen}
 \section{LCD size}
@@ -103,68 +135,120 @@ or by using the original \printcmd{LCD} command.
 |SIZE     |
 \end{Verbatim}
 
-\section{Additional defined characters} \LCDcolors{black}{white}
+\section{(Re)defined characters} \LCDcolors{black}{white}
+
 \begin{center}
-	\begin{tabular}{|l|l|>{\ttfamily}l|}
-		\multicolumn{3}{c}{\textbf{Added characters}} \\
-		\hline
-		Name       & Symbol          &\textnormal{\printcmd{LCD} Code} \\
-		\hline
-		E          & \LCDsymb{sciE}  & \{sciE\} \\
-		$\sigma$   & \LCDsymb{sigma} & \{sigma\} \\
-		$x^2$      & \LCDsymb{sq}    & \{sq\} \\
-		$x^{-1}$   & \LCDsymb{ar}    & \{ar\} \\
-		$y^x$      & \LCDsymb{cx}    & \{cx\} \\
-		$x_1$      & \LCDsymb{sub1}  & \{sub1\} \\
-		$x_2$      & \LCDsymb{sub2}  & \{sub2\} \\
-		$x_3$      & \LCDsymb{sub3}  & \{sub3\} \\
-		$x_4$      & \LCDsymb{sub4}  & \{sub4\} \\
-		$x_5$      & \LCDsymb{sub5}  & \{sub5\} \\
-		$x_6$      & \LCDsymb{sub6}  & \{sub6\} \\
-		$\bar x$   & \LCDsymb{barx}  & \{barx\} \\
-		$\bar y$   & \LCDsymb{bary}  & \{bary\} \\
-		\hline
-		\multicolumn{3}{c}{\textbf{Redefined characters}} \\
-		\hline
-		!          & \LCDsymb{!}     & \{!\} \\
-		\{         & \LCDsymb{lb}    & \{lb\} \\
-		\}         & \LCDsymb{rb}    & \{rb\} \\
-		$[$        & \LCDsymb{rb}    & \{rb\} \\
-		$]$        & \LCDsymb{rb}    & \{rb\} \\
-		$\sqrt{x}$ & \LCDsymb{sqrt}  & \{sqrt\} \\
-		e          & \LCDsymb{e}     & e \\
-		i          & \LCDsymb{i}     & i \\
-		v          & \LCDsymb{v}     & v \\
-		w          & \LCDsymb{w}     & w \\
-		\hline
-	\end{tabular}
+	\begin{multicols}{2}
+		\begin{tabular}{|l|l|l|}
+			\multicolumn{3}{c}{\textbf{Added characters}}                    \\ \hline
+			Name       & Symbol                         & \verb|\LCD| Code   \\ \hline
+			E          & {\large \textLCD{1}|{sciE}~|}  & \texttt{\{sciE\}}  \\
+			$\sigma$   & {\large \textLCD{1}|{sigma}~|} & \texttt{\{sigma\}} \\
+			$x^2$      & {\large \textLCD{1}|{sq}~|}    & \texttt{\{sq\}}    \\
+			$x^{-1}$   & {\large \textLCD{1}|{ar}~|}    & \texttt{\{ar\}}    \\
+			$y^x$      & {\large \textLCD{1}|{cx}~|}    & \texttt{\{cx\}}    \\
+			$x_1$      & {\large \textLCD{1}|{sub1}~|}  & \texttt{\{sub1\}}  \\
+			$x_2$      & {\large \textLCD{1}|{sub2}~|}  & \texttt{\{sub2\}}  \\
+			$x_3$      & {\large \textLCD{1}|{sub3}~|}  & \texttt{\{sub3\}}  \\
+			$x_4$      & {\large \textLCD{1}|{sub4}~|}  & \texttt{\{sub4\}}  \\
+			$x_5$      & {\large \textLCD{1}|{sub5}~|}  & \texttt{\{sub5\}}  \\
+			$x_6$      & {\large \textLCD{1}|{sub6}~|}  & \texttt{\{sub6\}}  \\
+			$\bar x$   & {\large \textLCD{1}|{barx}~|}  & \texttt{\{barx\}}  \\
+			$\bar y$   & {\large \textLCD{1}|{bary}~|}  & \texttt{\{bary\}}  \\ \hline
+		\end{tabular}
+
+		\begin{tabular}{|l|l|l|}
+			\multicolumn{3}{c}{\textbf{Redefined characters}}                \\ \hline
+			Name       & Symbol                         & \verb|\LCD| Code   \\ \hline
+			!          & {\large \textLCD{1}|{!}~|}     & \texttt{\{!\}}     \\
+			\{         & {\large \textLCD{1}|{lb}~|}    & \texttt{\{lb\}}    \\
+			\}         & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
+			$[$        & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
+			$]$        & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
+			\textsurd  & {\large \textLCD{1}|{sqrt}~|}  & \texttt{\{sqrt\}}  \\
+			e          & {\large \textLCD{1}|{e}~|}     & \texttt{e}         \\
+			i          & {\large \textLCD{1}|{i}~|}     & \texttt{i}         \\
+			v          & {\large \textLCD{1}|{v}~|}     & \texttt{v}         \\
+			w          & {\large \textLCD{1}|{w}~|}     & \texttt{w}         \\ \hline
+		\end{tabular}
+	\end{multicols}
 \end{center}
 
 \part{Buttons}
+
 \section{Usage}
 
-Use the \printcmd{tibtn} command only prints the button and is usefull when
-needing the buttons to be displayed inline. The \printcmd{tibtnextra} takes
-extra arguments to show extra options for the button (accesed by the
-\tibtnsecond{} and \tibtnalpha{} buttons).
+The \verb|\tibtn...| commands only prints the button and are useful when
+displaying buttons inline. The \verb|\tibtnextra...| commands shows the extra
+functionality of the button (accessed by the \tibtnsecond{} and \tibtnalpha{}
+buttons). See secion \ref{sec:button} for defined buttons and section
+\ref{sec:buttonscustom} for how to define custom buttons.
 
-\begin{SideBySideExample}[xrightmargin=5.5cm]
-\tibtnextra{\tibtn[white]{tibtngray}{MATH}}{TEST}{A}
-
-Lorem
-\tibtn[white]{tibtngray}{MATH}
-ipsum
-\end{SideBySideExample}
-
-\section{Defined buttons}
+\section{Defined buttons} \label{sec:button}
 
 \begin{center}
-	\begin{tabular}{|>{\ttfamily}l|l|}
-		\multicolumn{2}{c}{\textbf{Defined buttons}}      \\ \hline
-		\textnormal{Command}        & Output              \\ \hline
-		\printcmd{tibtnmatrix}      & \tibtnmatrix{}      \\ \hline
-		\printcmd{tibtnmatrixextra} & \tibtnmatrixextra{} \\ \hline
-	\end{tabular}
+	\begin{longtable}{lrlr}
+		\verb|\tibtnsecond|     & \tibtnsecond     & \tibtnextrasecond     & \verb|\tibtnextrasecond|     \\
+		\verb|\tibtnmode|       & \tibtnmode       & \tibtnextramode       & \verb|\tibtnextramode|       \\
+		\verb|\tibtndel|        & \tibtndel        & \tibtnextradel        & \verb|\tibtnextradel|        \\
+		\verb|\tibtnalpha|      & \tibtnalpha      & \tibtnextraalpha      & \verb|\tibtnextraalpha|      \\
+		\verb|\tibtnxton|       & \tibtnxton       & \tibtnextraxton       & \verb|\tibtnextraxton|       \\
+		\verb|\tibtnstat|       & \tibtnstat       & \tibtnextrastat       & \verb|\tibtnextrastat|       \\
+		\verb|\tibtnmath|       & \tibtnmath       & \tibtnextramath       & \verb|\tibtnextramath|       \\
+		\verb|\tibtnmatrix|     & \tibtnmatrix     & \tibtnextramatrix     & \verb|\tibtnextramatrix|     \\
+		\verb|\tibtnprgm|       & \tibtnprgm       & \tibtnextraprgm       & \verb|\tibtnextraprgm|       \\
+		\verb|\tibtnvars|       & \tibtnvars       & \tibtnextravars       & \verb|\tibtnextravars|       \\
+		\verb|\tibtnclear|      & \tibtnclear      & \tibtnextraclear      & \verb|\tibtnextraclear|      \\
+		\verb|\tibtnxnone|      & \tibtnxnone      & \tibtnextraxnone      & \verb|\tibtnextraxnone|      \\
+		\verb|\tibtnsin|        & \tibtnsin        & \tibtnextrasin        & \verb|\tibtnextrasin|        \\
+		\verb|\tibtncos|        & \tibtncos        & \tibtnextracos        & \verb|\tibtnextracos|        \\
+		\verb|\tibtntan|        & \tibtntan        & \tibtnextratan        & \verb|\tibtnextratan|        \\
+		\verb|\tibtnpower|      & \tibtnpower      & \tibtnextrapower      & \verb|\tibtnextrapower|      \\
+		\verb|\tibtnxtwo|       & \tibtnxtwo       & \tibtnextraxtwo       & \verb|\tibtnextraxtwo|       \\
+		\verb|\tibtncomma|      & \tibtncomma      & \tibtnextracomma      & \verb|\tibtnextracomma|      \\
+		\verb|\tibtnleftparen|  & \tibtnleftparen  & \tibtnextraleftparen  & \verb|\tibtnextraleftparen|  \\
+		\verb|\tibtnrightparen| & \tibtnrightparen & \tibtnextrarightparen & \verb|\tibtnextrarightparen| \\
+		\verb|\tibtndiv|        & \tibtndiv        & \tibtnextradiv        & \verb|\tibtnextradiv|        \\
+		\verb|\tibtnlog|        & \tibtnlog        & \tibtnextralog        & \verb|\tibtnextralog|        \\
+		\verb|\tibtnseven|      & \tibtnseven      & \tibtnextraseven      & \verb|\tibtnextraseven|      \\
+		\verb|\tibtneight|      & \tibtneight      & \tibtnextraeight      & \verb|\tibtnextraeight|      \\
+		\verb|\tibtnnine|       & \tibtnnine       & \tibtnextranine       & \verb|\tibtnextranine|       \\
+		\verb|\tibtntimes|      & \tibtntimes      & \tibtnextratimes      & \verb|\tibtnextratimes|      \\
+		\verb|\tibtnln|         & \tibtnln         & \tibtnextraln         & \verb|\tibtnextraln|         \\
+		\verb|\tibtnfour|       & \tibtnfour       & \tibtnextrafour       & \verb|\tibtnextrafour|       \\
+		\verb|\tibtnfive|       & \tibtnfive       & \tibtnextrafive       & \verb|\tibtnextrafive|       \\
+		\verb|\tibtnsix|        & \tibtnsix        & \tibtnextrasix        & \verb|\tibtnextrasix|        \\
+		\verb|\tibtnminus|      & \tibtnminus      & \tibtnextraminus      & \verb|\tibtnextraminus|      \\
+		\verb|\tibtnsto|        & \tibtnsto        & \tibtnextrasto        & \verb|\tibtnextrasto|        \\
+		\verb|\tibtnone|        & \tibtnone        & \tibtnextraone        & \verb|\tibtnextraone|        \\
+		\verb|\tibtntwo|        & \tibtntwo        & \tibtnextratwo        & \verb|\tibtnextratwo|        \\
+		\verb|\tibtnthree|      & \tibtnthree      & \tibtnextrathree      & \verb|\tibtnextrathree|      \\
+		\verb|\tibtnplus|       & \tibtnplus       & \tibtnextraplus       & \verb|\tibtnextraplus|       \\
+		\verb|\tibtnon|         & \tibtnon         & \tibtnextraon         & \verb|\tibtnextraon|         \\
+		\verb|\tibtnzero|       & \tibtnzero       & \tibtnextrazero       & \verb|\tibtnextrazero|       \\
+		\verb|\tibtndot|        & \tibtndot        & \tibtnextradot        & \verb|\tibtnextradot|        \\
+		\verb|\tibtnneg|        & \tibtnneg        & \tibtnextraneg        & \verb|\tibtnextraneg|        \\
+		\verb|\tibtnenter|      & \tibtnenter      & \tibtnextraenter      & \verb|\tibtnextraenter|      \\
+	\end{longtable}
 \end{center}
+
+\section{Custom buttons} \label{sec:buttonscustom}
+
+Buttons are defined using the \verb|\tibtn| and \verb|\tibtnextra|. It's often
+convenient to define a \verb|\tibtn| command then use it inside
+\verb|\tibtnextra| (See example below). See section \ref{sec:colordef} for a
+list of defined colors.
+
+\verb|\tibtn[<text color>]{<button color>}{<text>}|
+
+\verb|\tibtnextra{<middle>}{<top left>}{<top right>}|
+
+\begin{SideBySideExample}[xrightmargin=5.5cm]
+\def\tibtnfoo{\tibtn[black]{tibtnblue}{FOO}}
+\tibtnfoo{}
+
+\def\tibtnextrafoo{\tibtnextra{\tibtnfoo}{BAR}{BAZ}}
+\tibtnextrafoo
+\end{SideBySideExample}
 
 \end{document}

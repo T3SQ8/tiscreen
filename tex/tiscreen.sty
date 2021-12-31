@@ -13,6 +13,10 @@
 \RequirePackage{tikz}
 \RequirePackage{tcolorbox}
 \RequirePackage{array}
+\RequirePackage{xcolor}
+\RequirePackage{tipa}
+\RequirePackage{textgreek}
+\RequirePackage{wasysym}
 
 % Define screen characters
 \DefineLCDchar{barx}{11111000001000101010001000101010001}
@@ -40,7 +44,10 @@
 \DefineLCDchar{lb}{00011001000010001000001000010000011}
 \DefineLCDchar{rb}{11000001000010000010001000010011000}
 
-\RequirePackage{xcolor}
+%
+% COLORS
+%
+
 % Screen colors
 \definecolor{tiscreenfg}{HTML}{000000}
 \definecolor{tiscreenbg}{HTML}{5d9345}
@@ -71,9 +78,93 @@
 	}%
 }
 
-% Button definitions
-\def\tibtnsecond{\tibtn{tibtnyellow}{2nd}}
-\def\tibtnalpha{\tibtn{tibtngreen}{ALPHA}}
+%
+% BUTTON DEFINITIONS
+%
 
-\def\tibtnmatrix{\tibtn[white]{tibtngray}{MATRX}}
-\def\tibtnmatrixextra{\tibtnextra{\tibtnmatrix}{ANGLE}{B}}
+% Special
+\def\tibtnalpha{\tibtn{tibtngreen}{ALPHA}}                                               % ALPHA
+\def\tibtnsecond{\tibtn{tibtnyellow}{2nd}}                                               % EXTRA
+\def\tibtnenter{\tibtn[black]{tibtnblue}{ENTER}}                                         % ENTER
+\def\tibtnextraalpha{\tibtnextra{\tibtnalpha}{A-LOCK}{}}                                 % ALPHA
+\def\tibtnextrasecond{\tibtnextra{\tibtnsecond}{}{}}                                     % EXTRA
+\def\tibtnextraenter{\tibtnextra{\tibtnenter}{ENTRY\hspace{0.25ex}}{SOLVE}}              % ENTER
+% Operators
+\def\tibtndiv  {\tibtn[black]{tibtnblue}{$\div$}}                                        % division
+\def\tibtntimes{\tibtn[black]{tibtnblue}{\scriptsize\texttimes}}                         % times
+\def\tibtnminus{\tibtn[black]{tibtnblue}{\footnotesize --}}                              % minus
+\def\tibtnplus {\tibtn[black]{tibtnblue}{\footnotesize +}}                               % plus
+\def\tibtnextradiv  {\tibtnextra{\tibtndiv}  {e}  {M}}                                   % division
+\def\tibtnextratimes{\tibtnextra{\tibtntimes}{[}  {R}}                                   % times
+\def\tibtnextraminus{\tibtnextra{\tibtnminus}{]}  {W}}                                   % minus
+\def\tibtnextraplus {\tibtnextra{\tibtnplus} {MEM}{!!}}                                  % plus
+% Numbers
+\def\tibtnzero{\tibtn[black]{tibtnwhite} {\scriptsize 0}}                                % 0
+\def\tibtnone  {\tibtn[black]{tibtnwhite}{\scriptsize 1}}                                % 1
+\def\tibtntwo  {\tibtn[black]{tibtnwhite}{\scriptsize 2}}                                % 2
+\def\tibtnthree{\tibtn[black]{tibtnwhite}{\scriptsize 3}}                                % 3
+\def\tibtnfour {\tibtn[black]{tibtnwhite}{\scriptsize 4}}                                % 4
+\def\tibtnfive {\tibtn[black]{tibtnwhite}{\scriptsize 5}}                                % 5
+\def\tibtnsix  {\tibtn[black]{tibtnwhite}{\scriptsize 6}}                                % 6
+\def\tibtnseven{\tibtn[black]{tibtnwhite}{\scriptsize 7}}                                % 7
+\def\tibtneight{\tibtn[black]{tibtnwhite}{\scriptsize 8}}                                % 8
+\def\tibtnnine {\tibtn[black]{tibtnwhite}{\scriptsize 9}}                                % 9
+\def\tibtnextrazero {\tibtnextra{\tibtnzero} {CATALOG}{\large \textvisiblespace}}        % 0
+\def\tibtnextraone  {\tibtnextra{\tibtnone}  {L1}     {Y}}                               % 1
+\def\tibtnextratwo  {\tibtnextra{\tibtntwo}  {L2}     {Z}}                               % 2
+\def\tibtnextrathree{\tibtnextra{\tibtnthree}{L3}     {\texttheta}}                      % 3
+\def\tibtnextrafour {\tibtnextra{\tibtnfour} {L4}     {T}}                               % 4
+\def\tibtnextrafive {\tibtnextra{\tibtnfive} {L5}     {U}}                               % 5
+\def\tibtnextrasix  {\tibtnextra{\tibtnsix}  {L6}     {V}}                               % 6
+\def\tibtnextraseven{\tibtnextra{\tibtnseven}{u}      {O}}                               % 7
+\def\tibtnextraeight{\tibtnextra{\tibtneight}{v}      {P}}                               % 8
+\def\tibtnextranine {\tibtnextra{\tibtnnine} {w}      {Q}}                               % 9
+% Misc
+\def\tibtnmode      {\tibtn[white]{tibtngray}{MODE}}                                     % MODE
+\def\tibtndel       {\tibtn[white]{tibtngray}{DEL}}                                      % DEL
+\def\tibtnxton      {\tibtn[white]{tibtngray}{X,T,\texttheta,n}}                         % X,T,ϴ,n
+\def\tibtnstat      {\tibtn[white]{tibtngray}{STAT}}                                     % STAT
+\def\tibtnmath      {\tibtn[white]{tibtngray}{MATH}}                                     % MATH
+\def\tibtnmatrix    {\tibtn[white]{tibtngray}{MATRX}}                                    % MATRIX
+\def\tibtnprgm      {\tibtn[white]{tibtngray}{PRGM}}                                     % PRGM
+\def\tibtnvars      {\tibtn[white]{tibtngray}{VARS}}                                     % VARS
+\def\tibtnclear     {\tibtn[white]{tibtngray}{CLEAR}}                                    % CLEAR
+\def\tibtnxnone     {\tibtn[white]{tibtngray}{x\textsuperscript{-1}}}                    % x^-1
+\def\tibtnsin       {\tibtn[white]{tibtngray}{SIN}}                                      % SIN
+\def\tibtncos       {\tibtn[white]{tibtngray}{COS}}                                      % COS
+\def\tibtntan       {\tibtn[white]{tibtngray}{TAN}}                                      % TAN
+\def\tibtnpower     {\tibtn[white]{tibtngray}{$\wedge$}}                                 % ^
+\def\tibtnxtwo      {\tibtn[white]{tibtngray}{x\textsuperscript{2}}}                     % x^2
+\def\tibtncomma     {\tibtn[white]{tibtngray}{\large ,}}                                 % comma
+\def\tibtnleftparen {\tibtn[white]{tibtngray}{(}}                                        % left parenthesis
+\def\tibtnrightparen{\tibtn[white]{tibtngray}{)}}                                        % right parenthesis
+\def\tibtnlog       {\tibtn[white]{tibtngray}{LOG}}                                      % log
+\def\tibtnln        {\tibtn[white]{tibtngray}{LN}}                                       % LN
+\def\tibtnsto       {\tibtn[white]{tibtngray}{STO\RIGHTarrow}}                           % STO
+\def\tibtnon        {\tibtn[white]{tibtngray}{ON}}                                       % ON
+\def\tibtndot       {\tibtn[black]{tibtnwhite}{\huge $\cdot$}}                           % dot
+\def\tibtnneg       {\tibtn[black]{tibtnwhite}{(---)}}                                   % negative
+\def\tibtnextramode      {\tibtnextra{\tibtnmode}      {QUIT}{}}                         % MODE
+\def\tibtnextradel       {\tibtnextra{\tibtndel}       {INS}{}}                          % DEL
+\def\tibtnextraxton      {\tibtnextra{\tibtnxton}      {LINK}{}}                         % X,T,ϴ,n
+\def\tibtnextrastat      {\tibtnextra{\tibtnstat}      {LIST}{}}                         % STAT
+\def\tibtnextramath      {\tibtnextra{\tibtnmath}      {TEST}{A}}                        % MATH
+\def\tibtnextramatrix    {\tibtnextra{\tibtnmatrix}    {ANGLE}{B}}                       % MATRIX
+\def\tibtnextraprgm      {\tibtnextra{\tibtnprgm}      {DRAW}{C}}                        % PRGM
+\def\tibtnextravars      {\tibtnextra{\tibtnvars}      {DISTR}{}}                        % VARS
+\def\tibtnextraclear     {\tibtnextra{\tibtnclear}     {}{}}                             % CLEAR
+\def\tibtnextraxnone     {\tibtnextra{\tibtnxnone}     {FINANCE\hspace{1ex}}{D}}         % x^-1
+\def\tibtnextrasin       {\tibtnextra{\tibtnsin}       {SIN\textsuperscript{-1}}{E}}     % SIN
+\def\tibtnextracos       {\tibtnextra{\tibtncos}       {COS\textsuperscript{-1}}{F}}     % COS
+\def\tibtnextratan       {\tibtnextra{\tibtntan}       {TAN\textsuperscript{-1}}{G}}     % TAN
+\def\tibtnextrapower     {\tibtnextra{\tibtnpower}     {\scriptsize\mdseries\textpi}{H}} % ^
+\def\tibtnextraxtwo      {\tibtnextra{\tibtnxtwo}      {$\sqrt{\phantom{x}}$}{I}}        % x^2
+\def\tibtnextracomma     {\tibtnextra{\tibtncomma}     {EE}{J}}                          % comma
+\def\tibtnextraleftparen {\tibtnextra{\tibtnleftparen} {\{}{K}}                          % left parenthesis
+\def\tibtnextrarightparen{\tibtnextra{\tibtnrightparen}{\}}{L}}                          % right parenthesis
+\def\tibtnextralog       {\tibtnextra{\tibtnlog}       {10$^x$}{N}}                      % LOG
+\def\tibtnextraln        {\tibtnextra{\tibtnln}        {e$^x$}{S}}                       % LN
+\def\tibtnextrasto       {\tibtnextra{\tibtnsto}       {RCL}{X}}                         % STO
+\def\tibtnextraon        {\tibtnextra{\tibtnon}        {OFF}{}}                          % ON
+\def\tibtnextradot       {\tibtnextra{\tibtndot}       {\scriptsize $i$}{:}}             % dot
+\def\tibtnextraneg       {\tibtnextra{\tibtnneg}       {ANS}{?}}                         % negative
