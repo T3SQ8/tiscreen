@@ -1,0 +1,9 @@
+wedge
+square root
+square and squigly brackets
+division character
+10^x
+e^x
+comma
+whitespace (beside catalog)
+i above .
