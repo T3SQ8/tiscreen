@@ -6,6 +6,7 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 
+\usepackage{amsmath}
 \usepackage[color]{tiscreen}
 \usepackage{multicol}
 \usepackage{array}
@@ -19,8 +20,11 @@
 	fontsize=\footnotesize,
 }
 
-\title{TI calculator screen (and buttons)\\{\small TI-82 STATS}}
-\author{Mustafa Ibrahim}
+\newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
+\newcommand{\printcmd}[1]{\texttt{\textbackslash #1}}
+
+\title{TI calculator screen (and buttons)\\{\small TI-82 STATS, TI-84}}
+\author{Mustafa Ibrahim, Caleb Bibb}
 
 \begin{document}
 
@@ -107,6 +111,8 @@ as \texttt{tiscreenfg} (foreground, i.e. font color) and \texttt{tiscreenbg}
 	tibtncaseblack  & {\ttfamily \color{tibtncaseblack}{232A32}}                         & Buttons      \\
 \end{tabular}
 
+\newpage
+
 \part{Screen}
 
 \section{LCD size}
@@ -132,40 +138,70 @@ or by using the original \verb|\LCD| command.
 \section{(Re)defined characters} \LCDcolors{black}{white}
 
 \begin{center}
-	\begin{multicols}{2}
-		\begin{tabular}{|l|l|l|}
-			\multicolumn{3}{c}{\textbf{Added characters}}                    \\ \hline
-			Name       & Symbol                         & \verb|\LCD| Code   \\ \hline
-			E          & {\large \textLCD{1}|{sciE}~|}  & \texttt{\{sciE\}}  \\
-			$\sigma$   & {\large \textLCD{1}|{sigma}~|} & \texttt{\{sigma\}} \\
-			$x^2$      & {\large \textLCD{1}|{sq}~|}    & \texttt{\{sq\}}    \\
-			$x^{-1}$   & {\large \textLCD{1}|{ar}~|}    & \texttt{\{ar\}}    \\
-			$y^x$      & {\large \textLCD{1}|{cx}~|}    & \texttt{\{cx\}}    \\
-			$x_1$      & {\large \textLCD{1}|{sub1}~|}  & \texttt{\{sub1\}}  \\
-			$x_2$      & {\large \textLCD{1}|{sub2}~|}  & \texttt{\{sub2\}}  \\
-			$x_3$      & {\large \textLCD{1}|{sub3}~|}  & \texttt{\{sub3\}}  \\
-			$x_4$      & {\large \textLCD{1}|{sub4}~|}  & \texttt{\{sub4\}}  \\
-			$x_5$      & {\large \textLCD{1}|{sub5}~|}  & \texttt{\{sub5\}}  \\
-			$x_6$      & {\large \textLCD{1}|{sub6}~|}  & \texttt{\{sub6\}}  \\
-			$\bar x$   & {\large \textLCD{1}|{barx}~|}  & \texttt{\{barx\}}  \\
-			$\bar y$   & {\large \textLCD{1}|{bary}~|}  & \texttt{\{bary\}}  \\ \hline
-		\end{tabular}
-
-		\begin{tabular}{|l|l|l|}
-			\multicolumn{3}{c}{\textbf{Redefined characters}}                \\ \hline
-			Name       & Symbol                         & \verb|\LCD| Code   \\ \hline
-			!          & {\large \textLCD{1}|{!}~|}     & \texttt{\{!\}}     \\
-			\{         & {\large \textLCD{1}|{lb}~|}    & \texttt{\{lb\}}    \\
-			\}         & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
-			$[$        & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
-			$]$        & {\large \textLCD{1}|{rb}~|}    & \texttt{\{rb\}}    \\
-			\textsurd  & {\large \textLCD{1}|{sqrt}~|}  & \texttt{\{sqrt\}}  \\
-			e          & {\large \textLCD{1}|{e}~|}     & \texttt{e}         \\
-			i          & {\large \textLCD{1}|{i}~|}     & \texttt{i}         \\
-			v          & {\large \textLCD{1}|{v}~|}     & \texttt{v}         \\
-			w          & {\large \textLCD{1}|{w}~|}     & \texttt{w}         \\ \hline
-		\end{tabular}
-	\end{multicols}
+	\begin{tabular}{|l|l|>{\ttfamily}l|}
+		\multicolumn{3}{c}{\textbf{Added characters}} \\
+		\hline
+		Name             & Symbol              & \textnormal{\printcmd{LCD} Code} \\
+		\hline
+		E                & \LCDsymb{sciE}      & \{sciE\} \\
+		$\sigma$         & \LCDsymb{sigma}     & \{sigma\} \\
+		$\Sigma$         & \LCDsymb{Sigma}     & \{Sigma\} \\
+		$x^2$            & \LCDsymb{sq}        & \{sq\} \\
+		$x^{-1}$         & \LCDsymb{ar}        & \{ar\} \\
+		$x^3$            & \LCDsymb{c3}        & \{c3\} \\
+		$y^x$            & \LCDsymb{cx}        & \{cx\} \\
+		$x_1$            & \LCDsymb{sub1}      & \{sub1\} \\
+		$x_2$            & \LCDsymb{sub2}      & \{sub2\} \\
+		$x_3$            & \LCDsymb{sub3}      & \{sub3\} \\
+		$x_4$            & \LCDsymb{sub4}      & \{sub4\} \\
+		$x_5$            & \LCDsymb{sub5}      & \{sub5\} \\
+		$x_6$            & \LCDsymb{sub6}      & \{sub6\} \\
+		$x_{10}$         & \LCDsymb{sub10}     & \{sub10\} \\
+		$\bar x$         & \LCDsymb{barx}      & \{barx\} \\
+		$\bar y$         & \LCDsymb{bary}      & \{bary\} \\
+		$-x$             & \LCDsymb{dash}      & \{dash\} \\
+		$\rightarrow$    & \LCDsymb{sto}       & \{sto\} \\
+		$\theta$         & \LCDsymb{theta}     & \{theta\} \\
+		$\pi$            & \LCDsymb{pi}        & \{pi\} \\
+		$\eta$           & \LCDsymb{eta}       & \{eta\} \\
+		$+$              & \LCDsymb{tick}      & \{tick\} \\
+		$^\circ$         & \LCDsymb{degree}    & \{degree\} \\
+		                 & \LCDsymb{square}    & \{square\} \\
+		                 & \LCDsymb{alpha}     & \{alpha\} \\
+		$\uparrow$       & \LCDsymb{2nd}       & \{2nd\} \\
+		$\geq$           & \LCDsymb{geq}       & \{geq\} \\
+		$\leq$           & \LCDsymb{leq}       & \{leq\} \\
+		$\neq$           & \LCDsymb{neq}       & \{neq\} \\
+		$x^3$            & \LCDsymb{c3}        & \{c3\} \\
+		$A^T$            & \LCDsymb{transpose} & \{transpose\} \\
+		$A^r$            & \LCDsymb{upr}       & \{upr\} \\
+		$chi$            & \LCDsymb{chi}       & \{chi\} \\
+		$\triangleright$ & \LCDsymb{fwedge}    & \{fwedge\} \\
+		$\triangleleft$  & \LCDsymb{bwedge}    & \{bwedge\} \\
+		$\mathbf{N}$     & \LCDsymb{bbN}       & \{bbN\} \\
+		$\mathbf{/}$     & \LCDsymb{bb/}       & \{bb/\} \\
+		\hline
+	\end{tabular}
+	\newpage
+	\begin{tabular}{|l|l|>{\ttfamily}l|}
+		\multicolumn{3}{c}{\textbf{Redefined characters}} \\
+		\hline
+		!          & \LCDsymb{!}     & \{!\} \\
+		\{         & \LCDsymb{lb}    & \{lb\} \\
+		\}         & \LCDsymb{rb}    & \{rb\} \\
+		$[$        & \LCDsymb{[}     & \{[\} \\
+		$]$        & \LCDsymb{]}     & \{]\} \\
+		$\sqrt{x}$ & \LCDsymb{sqrt}  & \{sqrt\} \\
+		e          & \LCDsymb{e}     & \{e\} \\
+		i          & \LCDsymb{i}     & \{i\} \\
+		v          & \LCDsymb{v}     & \{v\} \\
+		w          & \LCDsymb{w}     & \{w\} \\
+		Ellipses   & \LCDsymb{ell}   & \{ell\} \\
+		Apostrophe & \LCDsymb{'}     & \{'\} \\
+		List       & \LCDsymb{L}     & \{L\} \\
+		Underscore & \LCDsymb{_}     & \{\_\} \\
+		\hline
+	\end{tabular}
 \end{center}
 
 \part{Buttons}
