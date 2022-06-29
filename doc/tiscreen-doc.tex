@@ -20,11 +20,13 @@
 	fontsize=\footnotesize,
 }
 
+\AddToHook{cmd/part/before}{\clearpage}
+
 \newcommand{\LCDsymb}[1]{\large \textLCD{1}|{#1}~|}
-\newcommand{\printcmd}[1]{\texttt{\textbackslash #1}}
 
 \title{TI calculator screen (and buttons)\\{\small TI-82 STATS, TI-84}}
 \author{Mustafa Ibrahim, Caleb Bibb}
+\date{2022-06-29}
 
 \begin{document}
 
@@ -100,7 +102,8 @@ as \texttt{tiscreenfg} (foreground, i.e. font color) and \texttt{tiscreenbg}
 \subsection{Defined colors} \label{sec:colordef}
 
 \begin{tabular}{lcl}
-	Name            & Color                                                              & Usage        \\ \hline
+	Name            & Color                                                              & Usage        \\
+	\hline
 	tiscreenfg      & {\ttfamily \color{tiscreenfg}{000000}}                             & LCD commands \\
 	tiscreenbg      & {\ttfamily \color{tiscreenbg}{5d9345}}                             & LCD commands \\
 	tibtngray       & {\ttfamily \color{tibtngray}{494F54}}                              & Buttons      \\
@@ -110,8 +113,6 @@ as \texttt{tiscreenfg} (foreground, i.e. font color) and \texttt{tiscreenbg}
 	tibtnblue       & {\ttfamily \colorbox{tibtncaseblack}{\color{tibtnblue}{CDE2E9}}}   & Buttons      \\
 	tibtncaseblack  & {\ttfamily \color{tibtncaseblack}{232A32}}                         & Buttons      \\
 \end{tabular}
-
-\newpage
 
 \part{Screen}
 
@@ -138,10 +139,10 @@ or by using the original \verb|\LCD| command.
 \section{(Re)defined characters} \LCDcolors{black}{white}
 
 \begin{center}
-	\begin{tabular}{|l|l|>{\ttfamily}l|}
+	\begin{longtable}{|l|l|>{\ttfamily}l|}
 		\multicolumn{3}{c}{\textbf{Added characters}} \\
 		\hline
-		Name             & Symbol              & \textnormal{\printcmd{LCD} Code} \\
+		Name             & Symbol              & \verb|\LCD| \textnormal{Code} \\
 		\hline
 		E                & \LCDsymb{sciE}      & \{sciE\} \\
 		$\sigma$         & \LCDsymb{sigma}     & \{sigma\} \\
@@ -181,35 +182,32 @@ or by using the original \verb|\LCD| command.
 		$\mathbf{N}$     & \LCDsymb{bbN}       & \{bbN\} \\
 		$\mathbf{/}$     & \LCDsymb{bb/}       & \{bb/\} \\
 		\hline
-	\end{tabular}
-	\newpage
-	\begin{tabular}{|l|l|>{\ttfamily}l|}
 		\multicolumn{3}{c}{\textbf{Redefined characters}} \\
 		\hline
-		!          & \LCDsymb{!}     & \{!\} \\
-		\{         & \LCDsymb{lb}    & \{lb\} \\
-		\}         & \LCDsymb{rb}    & \{rb\} \\
-		$[$        & \LCDsymb{[}     & \{[\} \\
-		$]$        & \LCDsymb{]}     & \{]\} \\
-		$\sqrt{x}$ & \LCDsymb{sqrt}  & \{sqrt\} \\
-		e          & \LCDsymb{e}     & \{e\} \\
-		i          & \LCDsymb{i}     & \{i\} \\
-		v          & \LCDsymb{v}     & \{v\} \\
-		w          & \LCDsymb{w}     & \{w\} \\
-		Ellipses   & \LCDsymb{ell}   & \{ell\} \\
-		Apostrophe & \LCDsymb{'}     & \{'\} \\
-		List       & \LCDsymb{L}     & \{L\} \\
-		Underscore & \LCDsymb{_}     & \{\_\} \\
+		!                & \LCDsymb{!}         & \{!\} \\
+		\{               & \LCDsymb{lb}        & \{lb\} \\
+		\}               & \LCDsymb{rb}        & \{rb\} \\
+		$[$              & \LCDsymb{[}         & \{[\} \\
+		$]$              & \LCDsymb{]}         & \{]\} \\
+		$\sqrt{x}$       & \LCDsymb{sqrt}      & \{sqrt\} \\
+		e                & \LCDsymb{e}         & \{e\} \\
+		i                & \LCDsymb{i}         & \{i\} \\
+		v                & \LCDsymb{v}         & \{v\} \\
+		w                & \LCDsymb{w}         & \{w\} \\
+		Ellipses         & \LCDsymb{ell}       & \{ell\} \\
+		Apostrophe       & \LCDsymb{'}         & \{'\} \\
+		List             & \LCDsymb{L}         & \{L\} \\
+		Underscore       & \LCDsymb{_}         & \{\_\} \\
 		\hline
-	\end{tabular}
+	\end{longtable}
 \end{center}
 
 \part{Buttons}
 
 \section{Usage}
 
-The \verb|\tibtn...| commands only prints the button and are useful when
-displaying buttons inline. The \verb|\tibtnextra...| commands shows the extra
+The \verb|\tibtn<...>| commands only prints the button and are useful when
+displaying buttons inline. The \verb|\tibtnextra<...>| commands shows the extra
 functionality of the button (accessed by the \tibtnsecond{} and \tibtnalpha{}
 buttons). See secion \ref{sec:button} for defined buttons and section
 \ref{sec:buttonscustom} for how to define custom buttons.
